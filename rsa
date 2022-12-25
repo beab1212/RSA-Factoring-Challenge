@@ -1,9 +1,9 @@
 #!/bin/bash
 
-
+#RSA Factoring Challenge
 check_factor()
 {
-        if [ $# -ne 3 ];
+	if [ $# -ne 3 ];
         then
                 args=("$@")
                 count=0
@@ -24,10 +24,10 @@ check_factor()
         num=$(echo "$1" | tr ':' '=')
 
         result=$(echo "if($num2 > $num1) 1 else 0" | bc)
-                if ((result == 1)); then
-                        numcp=$num1
-                        num1=$num2
-                        num2=$numcp
+	        if ((result == 1)); then
+		        numcp=$num1
+		        num1=$num2
+		        num2=$numcp
                 fi
 
         echo "$num$num1*$num2"
