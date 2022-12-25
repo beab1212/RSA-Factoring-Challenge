@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 check_factor()
 {
     if [ $# -ne 3 ];
