@@ -1,11 +1,32 @@
-#!/usr/bin/env bash
-# Factorize all the things!
-# read from file given as argv[1] ($1) and print factors for each num in file
+#!/usr/bin/python3
 
-FILE=$1
+from sys import argv
 
-while read NUM
-do
-    factors=($(factor $NUM))
-    echo "$NUM=$(($NUM/${factors[1]}))*${factors[1]}"
-done < $FILE
+
+def factorize(value):
+    """"print a simple descomposition of an integer > 1"""
+    i = 2
+
+    if value < 2:
+        return
+    print()
+    print(value, "<- value-bef")
+    while value % i:
+        i += 1
+    print("{:.0f}={:.0f}*{:.0f}".format(value, value / i, i))
+    print(value, "<- value-aft")
+    print()
+
+if len(argv) != 2:
+    exit()
+
+try:
+    with open(argv[1]) as file:
+        line = file.readline()
+
+        while line != "":
+            value = int(line.split('\n')[0])
+            factorize(value)
+            line = file.readline()
+except:
+    pass
